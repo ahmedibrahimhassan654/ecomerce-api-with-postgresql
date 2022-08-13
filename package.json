@@ -12,9 +12,17 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint . --ext .ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedibrahimhassan654/ecomerce-api-with-postgresql.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmedibrahimhassan654/ecomerce-api-with-postgresql/issues"
+  },
+  "homepage": "https://github.com/ahmedibrahimhassan654/ecomerce-api-with-postgresql#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
