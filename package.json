@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "tsc-watch --esModuleInterop src/index.ts --outDir ./build --onSuccess \"node ./build/index.js\"",
+    "migration": "db-migrate up",
     "test": "npx tsc && jasmine",
     "dev": "nodemon ./src/index.ts",
     "clean": "rimraf build/",
