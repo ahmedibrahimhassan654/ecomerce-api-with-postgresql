@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "watch": "tsc-watch --esModuleInterop src/index.ts --outDir ./build --onSuccess \"node ./build/index.js\"",
     "test": "npx tsc && jasmine",
     "dev": "nodemon ./src/index.ts",
     "clean": "rimraf build/",
@@ -24,15 +25,19 @@
   },
   "homepage": "https://github.com/ahmedibrahimhassan654/ecomerce-api-with-postgresql#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "helmet": "^5.1.1",
     "jasmine": "^3.10.0",
     "jasmine-spec-reporter": "^7.0.0",
     "morgan": "^1.10.0",
     "supertest": "^6.1.6"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
     "@types/jasmine": "^3.10.2",
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.11.12",
