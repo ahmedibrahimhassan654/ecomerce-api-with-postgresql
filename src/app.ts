@@ -4,6 +4,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import errorHandler from './middelware/errorhandler';
 import routes from './routes';
+// import db from './DB';
+
+
 const app: Application = express();
 app.use(express.json());
 // HTTP request logger middleware
@@ -14,6 +17,9 @@ app.use(helmet());
 
 // // add routing for /api path
 app.use('/api', routes);
+
+
+
 // error handler middleware
 app.use(errorHandler);
 export default app;
