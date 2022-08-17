@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 3000;
 const app: Application = express();
 // HTTP request logger middleware
 app.use(morgan('short'));
-
+//add midelware for parsing json
+app.use(express.json());
 // add routing for / path
 app.get('/', (req: Request, res: Response) => {
   res.json({

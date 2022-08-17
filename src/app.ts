@@ -7,8 +7,7 @@ import routes from './routes/index';
 
 const app = express();
 
-//add midelware for parsing json
-app.use(express.json());
+
 // HTTP request logger middleware
 app.use(morgan('dev'));
 app.use(cors());

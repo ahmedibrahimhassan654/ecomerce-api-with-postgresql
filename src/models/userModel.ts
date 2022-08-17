@@ -1,21 +1,19 @@
 /* eslint-disable camelcase  */
 /* eslint-disable class-methods-use-this  */
-// import bcrypt from 'bcrypt';
-// import config from '../config';
+
 import db from '../DB';
 import User from '../dataTypes/userType';
-import hashPassword from '../utils/hashPassword';
+//import hashPassword from '../utils/hashPassword';
 
 class UserModel {
-  async create(user: User): Promise<User | undefined> {
-
-
+  //create user
+  async create(user: User): Promise<User> {
     try {
       //open connection to database
       const client = await db.connect();
       //run query
       const query =
-        'INSERT INTO users (email, user_name, first_name,last_name,password) VALUES ($1, $2, $3, $4) RETURNING id,email, first_name, last_name';
+        'INSERT INTO users (email, user_name, first_name, last_name, password) VALUES ($1, $2, $3, $4,$5) RETURNING *';
       const result = await client.query(query, [
         user.email,
         user.user_name,
