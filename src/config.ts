@@ -12,6 +12,8 @@ const {
   POSTGRES_DB_PROD,
   POSTGRES_USER,
   POSTGRES_PASSWORD,
+  SALT_ROUNDS,
+  BCRYPT_PASSWORD,
 } = process.env;
 
 export default {
@@ -22,4 +24,6 @@ export default {
   databasename: NODE_ENV === 'dev' ? POSTGRES_DB_DEV : NODE_ENV === 'test' ? POSTGRES_DB_TEST : POSTGRES_DB_PROD,
   user: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
+  salt: SALT_ROUNDS,
+  pepper: BCRYPT_PASSWORD,
 };

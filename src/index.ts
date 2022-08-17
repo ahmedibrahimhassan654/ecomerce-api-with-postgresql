@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import config from './config';
 import db from './DB';
+import routes from './routes';
 
 const PORT = process.env.PORT || 3000;
 // create an instance server
@@ -13,6 +14,13 @@ app.use(morgan('short'));
 app.get('/', (req: Request, res: Response) => {
   res.json({
     message: 'Hello World 🌍',
+  });
+});
+// // add routing for /api path
+app.use('/api', routes);
+app.use((_req: Request, res: Response) => {
+  res.status(404).json({
+    message: 'Ohh you are lost, read the API documentation to find your way back home 😂',
   });
 });
 

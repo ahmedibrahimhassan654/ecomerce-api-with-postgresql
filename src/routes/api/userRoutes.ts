@@ -1,8 +1,13 @@
-import { Request, Response, Router } from 'express';
+import { Router } from 'express';
+import { createUser
+//  , getUsers, getUser, updateUser, deleteUser
 
-const userRoutes = Router();
+} from '../../controllers/userControllers';
+const routes = Router();
 
-userRoutes.get('/', (req: Request, res: Response) => {
-  res.send('Hello from userRoutes');
-});
-export default userRoutes;
+routes.route('/').post(createUser);
+//.get(getUsers);
+
+//routes.route('/:id').get(getUser).put(updateUser).delete(deleteUser);
+
+export default routes;
