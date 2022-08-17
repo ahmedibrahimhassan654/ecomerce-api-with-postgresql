@@ -8,7 +8,9 @@ const PORT = process.env.PORT || 3000;
 // create an instance server
 const app: Application = express();
 // HTTP request logger middleware
-app.use(morgan('short'));
+
+// HTTP request logger middleware
+app.use(morgan('dev'));
 //add midelware for parsing json
 app.use(express.json());
 // add routing for / path
