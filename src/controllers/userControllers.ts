@@ -12,3 +12,12 @@ export const createUser = asyncHandler(async (req: Request, res: Response) => {
     data: { ...user },
   });
 });
+
+export const getUsers = asyncHandler(async (req: Request, res: Response) => {
+  const users = await userModel.getAllUsers();
+  res.status(200).json({
+    success: true,
+    length: users.length,
+    data: users,
+  });
+});
