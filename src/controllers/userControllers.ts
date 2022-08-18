@@ -26,6 +26,21 @@ export const getSingleUser = asyncHandler(async (req: Request, res: Response, ne
   const user = await userModel.getUser(req.params.id);
   if (!user) {
     const error: Error = new Error(`User with id ${req.params.id} not found`);
+    return next(error);
+  }
+  res.status(200).json({
+    success: true,
+    data: { ...user },
+  });
+});
+
+export const updateUser = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+  if (!req.body.id) {
+    throw new Error('you should send the user id in the request body to update the user');
+  }
+  const user = await userModel.updateUser(req.body);
+  if (!user) {
+    const error: Error = new Error(`User with id ${req.params.id} not found`);
 
     return next(error);
   }
@@ -34,3 +49,15 @@ export const getSingleUser = asyncHandler(async (req: Request, res: Response, ne
     data: user,
   });
 });
+export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
+  const user = await userModel.deleteUser(req.params.id);
+  if (!user) {
+    const error: Error = new Error(`User with id ${req.params.id} not found`);
+    return next(error);
+  }
+
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+};

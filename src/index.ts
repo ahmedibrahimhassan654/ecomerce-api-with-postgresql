@@ -2,7 +2,10 @@ import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import config from './config';
 import db from './DB';
+import errorHandler from './middelware/errorhandler';
 import routes from './routes';
+import cors from 'cors';
+import helmet from 'helmet';
 
 const PORT = process.env.PORT || 3000;
 // create an instance server
@@ -13,6 +16,10 @@ const app: Application = express();
 app.use(morgan('dev'));
 //add midelware for parsing json
 app.use(express.json());
+
+app.use(cors());
+// HTTP security middleware headers
+app.use(helmet());
 // add routing for / path
 app.get('/', (req: Request, res: Response) => {
   res.json({
@@ -39,7 +46,8 @@ db.connect().then((client) => {
       console.error('DB Error', err.message);
     });
 });
-
+// error handler middleware
+app.use(errorHandler);
 // start express server
 app.listen(PORT, () => {
   console.log(`Server is starting at prot:${PORT} in ${config.env} mode`);
