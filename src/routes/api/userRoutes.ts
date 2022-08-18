@@ -4,15 +4,17 @@ import {
   getUsers,
   getSingleUser,
   updateUser,
-  deleteUser
+  deleteUser,
   //  , getUsers, getUser, updateUser, deleteUser
 } from '../../controllers/userControllers';
-import { Register } from '../../middelware/authMiddleware';
+import { Register, Login } from '../../controllers/authCOntrollers';
+import protect from '../../middelware/authonticateMiddleware';
 const routes = Router();
 
-routes.route('/').post(createUser).get(getUsers);
-routes.route('/:id').get(getSingleUser).put(updateUser).delete(deleteUser);
+routes.route('/').post(createUser).get(protect, getUsers);
+routes.route('/:id').get(protect, getSingleUser).put(protect, updateUser).delete(protect, deleteUser);
 routes.route('/regester').post(Register);
+routes.route('/login').post(Login);
 //.get(getUsers);
 
 //routes.route('/:id').get(getUser).put(updateUser).delete(deleteUser);
