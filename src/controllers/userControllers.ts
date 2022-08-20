@@ -26,6 +26,7 @@ export const getSingleUser = asyncHandler(async (req: Request, res: Response, ne
   const user = await userModel.getUser(req.params.id);
   if (!user) {
     const error: Error = new Error(`User with id ${req.params.id} not found`);
+
     return next(error);
   }
   res.status(200).json({
