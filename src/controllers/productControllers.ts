@@ -22,18 +22,18 @@ export const getProducts = asyncHandler(async (req: Request, res: Response) => {
   });
 });
 
-// export const getSingleUser = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-//   const user = await userModel.getUser(req.params.id);
-//   if (!user) {
-//     const error: Error = new Error(`User with id ${req.params.id} not found`);
+export const getSingleproduct = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+  const product = await productModel.getproduct(req.params.id);
+  if (!product) {
+    const error: Error = new Error(`product with id ${req.params.id} not found`);
 
-//     return next(error);
-//   }
-//   res.status(200).json({
-//     success: true,
-//     data: { ...user },
-//   });
-// });
+    return next(error);
+  }
+  res.status(200).json({
+    success: true,
+    data: { ...product },
+  });
+});
 
 // export const updateUser = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
 //   if (!req.body.id) {

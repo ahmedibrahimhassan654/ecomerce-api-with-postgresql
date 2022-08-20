@@ -43,19 +43,19 @@ class productModel {
     }
   }
 
-  //   async getUser(id: string): Promise<User> {
-  //     try {
-  //       const client = await db.connect();
-  //       const query = 'SELECT id, email, first_name, last_name FROM users WHERE id = $1';
-  //       const result = await client.query(query, [id]);
-  //       client.release();
-  //       return result.rows[0];
-  //     } catch (error) {
-  //       console.log(Error);
-  //       console.log('Error getting user');
-  //       throw new Error(`Unable to get user: ${(error as Error).message}`);
-  //     }
-  //   }
+  async getproduct(id: string): Promise<Product> {
+    try {
+      const client = await db.connect();
+      const query = 'SELECT * FROM products WHERE id = $1';
+      const result = await client.query(query, [id]);
+      client.release();
+      return result.rows[0];
+    } catch (error) {
+      console.log(Error);
+      console.log('Error getting product');
+      throw new Error(`Unable to get product: ${(error as Error).message}`);
+    }
+  }
 
   //   async updateUser(user: User): Promise<User> {
   //     try {
