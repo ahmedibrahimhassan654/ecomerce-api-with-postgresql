@@ -4,7 +4,7 @@
 import db from '../DB';
 import Product from '../dataTypes/productType';
 
-import config from '../config';
+// import config from '../config';
 class productModel {
   //create user
   async create(product: Product): Promise<Product> {
@@ -48,7 +48,7 @@ class productModel {
       const client = await db.connect();
       const query = 'SELECT * FROM products WHERE id = $1';
       const result = await client.query(query, [id]);
-      client.release();
+      client.release(); //close connection
       return result.rows[0];
     } catch (error) {
       console.log(Error);
@@ -57,21 +57,27 @@ class productModel {
     }
   }
 
-  //   async updateUser(user: User): Promise<User> {
-  //     try {
-  //       const connection = await db.connect();
-  //       const sql = `UPDATE users
-  //                   SET email=$1, first_name=$2, last_name=$3
-  //                   WHERE id=$4
-  //                   RETURNING id, email, first_name, last_name`;
+  async update(product: Product): Promise<Product> {
+    try {
+      const connection = await db.connect();
+      const sql = `UPDATE products
+                    SET name=$1, description=$2, price=$3, category=$4
+                    WHERE id=$5
+                    RETURNING *`;
 
-  //       const result = await connection.query(sql, [user.email, user.first_name, user.last_name, user.id]);
-  //       connection.release();
-  //       return result.rows[0];
-  //     } catch (error) {
-  //       throw new Error(`Could not update user: ${user.first_name}, ${(error as Error).message}`);
-  //     }
-  //   }
+      const result = await connection.query(sql, [
+        product.name,
+        product.description,
+        product.price,
+        product.category,
+        product.id,
+      ]);
+      connection.release();
+      return result.rows[0];
+    } catch (error) {
+      throw new Error(`Could not update product: ${product.name}, ${(error as Error).message}`);
+    }
+  }
 
   //   async deleteUser(id: string): Promise<User> {
   //     try {
