@@ -79,42 +79,19 @@ class productModel {
     }
   }
 
-  //   async deleteUser(id: string): Promise<User> {
-  //     try {
-  //       const client = await db.connect();
-  //       const query = 'DELETE FROM users WHERE id = $1 RETURNING id,email, first_name, last_name';
-  //       const result = await client.query(query, [id]);
-  //       client.release();
-  //       return result.rows[0];
-  //     } catch (error) {
-  //       console.log(error);
-  //       console.log('Error deleting user');
-  //       throw new Error(`Unable to delete user: ${(error as Error).message}`);
-  //     }
-  //   }
-
-  //   async LoginUser(email: string, password: string): Promise<User | null> {
-  //     try {
-  //       const connection = await db.connect();
-  //       const sql = 'SELECT password FROM users WHERE email=$1';
-  //       const result = await connection.query(sql, [email]);
-  //       if (result.rows.length) {
-  //         const { password: hashPassword } = result.rows[0];
-  //         const isPasswordValid = bcrypt.compareSync(`${password}${config.pepper}`, hashPassword);
-  //         if (isPasswordValid) {
-  //           const userInfo = await connection.query(
-  //             'SELECT id, email, first_name, last_name FROM users WHERE email=($1)',
-  //             [email]
-  //           );
-  //           return userInfo.rows[0];
-  //         }
-  //       }
-  //       connection.release();
-  //       return null;
-  //     } catch (error) {
-  //       throw new Error(`Unable to login: ${(error as Error).message}`);
-  //     }
-  //   }
+  async delete(id: string): Promise<Product> {
+    try {
+      const client = await db.connect();
+      const query = 'DELETE FROM products WHERE id = $1 RETURNING *';
+      const result = await client.query(query, [id]);
+      client.release();
+      return result.rows[0];
+    } catch (error) {
+      console.log(error);
+      console.log('Error deleting user');
+      throw new Error(`Unable to delete product: ${(error as Error).message}`);
+    }
+  }
 }
 
 export default productModel;

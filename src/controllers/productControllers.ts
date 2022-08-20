@@ -50,15 +50,15 @@ export const updateProduct = asyncHandler(async (req: Request, res: Response, ne
     data: { ...updatedProduct },
   });
 });
-// export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
-//   const user = await userModel.deleteUser(req.params.id);
-//   if (!user) {
-//     const error: Error = new Error(`User with id ${req.params.id} not found`);
-//     return next(error);
-//   }
+export const deleteProduct = async (req: Request, res: Response, next: NextFunction) => {
+  const user = await productModel.delete(req.params.id);
+  if (!user) {
+    const error: Error = new Error(`product with id ${req.params.id} not found`);
+    return next(error);
+  }
 
-//   res.status(200).json({
-//     success: true,
-//     data: {},
-//   });
-// };
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+};
