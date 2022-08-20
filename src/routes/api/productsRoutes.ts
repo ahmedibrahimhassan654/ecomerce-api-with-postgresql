@@ -1,10 +1,9 @@
 import { Router } from 'express';
-import { createProduct } from '../../controllers/productControllers';
+import { createProduct, getProducts } from '../../controllers/productControllers';
 
 const routes = Router();
 
-routes.route('/').post(createProduct);
-// .get(protect, getUsers);
+routes.route('/').post(createProduct).get(getProducts);
 // routes.route('/:id').get(protect, getSingleUser).put(protect, updateUser).delete(protect, deleteUser);
 // routes.route('/regester').post(Register);
 // routes.route('/login').post(Login);

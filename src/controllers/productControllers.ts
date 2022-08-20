@@ -13,14 +13,14 @@ export const createProduct = asyncHandler(async (req: Request, res: Response) =>
   });
 });
 
-// export const getUsers = asyncHandler(async (req: Request, res: Response) => {
-//   const users = await userModel.getAllUsers();
-//   res.status(200).json({
-//     success: true,
-//     length: users.length,
-//     data: users,
-//   });
-// });
+export const getProducts = asyncHandler(async (req: Request, res: Response) => {
+  const products = await productModel.getAllProducts();
+  res.status(200).json({
+    success: true,
+    length: products.length,
+    data: products,
+  });
+});
 
 // export const getSingleUser = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
 //   const user = await userModel.getUser(req.params.id);

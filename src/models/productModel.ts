@@ -25,23 +25,23 @@ class productModel {
     }
   }
   //   //get all users
-  //   async getAllUsers(): Promise<User[]> {
-  //     try {
-  //       //open connection to database
-  //       const client = await db.connect();
-  //       //run query
-  //       const query = 'SELECT id, email, first_name, last_name FROM users';
-  //       const result = await client.query(query);
-  //       //close connection
-  //       client.release();
-  //       //return result
-  //       return result.rows;
-  //     } catch (error) {
-  //       console.log(error);
-  //       console.log('Error getting all users');
-  //       throw new Error(`Unable to get all users: ${(error as Error).message}`);
-  //     }
-  //   }
+  async getAllProducts(): Promise<Product[]> {
+    try {
+      //open connection to database
+      const client = await db.connect();
+      //run query
+      const query = 'SELECT * FROM products';
+      const result = await client.query(query);
+      //close connection
+      client.release();
+      //return result
+      return result.rows;
+    } catch (error) {
+      console.log(error);
+      console.log('Error getting all users');
+      throw new Error(`Unable to get all prpducts: ${(error as Error).message}`);
+    }
+  }
 
   //   async getUser(id: string): Promise<User> {
   //     try {

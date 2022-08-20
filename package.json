@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "migration": "db-migrate up",
+    "migration:down": "db-migrate down",
     "test": "npx tsc && jasmine",
     "dev": "nodemon ./src/index.ts",
     "clean": "rimraf build/",
