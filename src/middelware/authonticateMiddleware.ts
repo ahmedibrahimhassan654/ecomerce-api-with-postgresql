@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 
 import asyncHandler from 'express-async-handler';
 import handleUthontication from '../utils/handleAuth';
+//import User from '../dataTypes/userType';
 
 const protect = asyncHandler(async (req: Request, _res: Response, next: NextFunction) => {
   try {
@@ -32,5 +33,9 @@ const protect = asyncHandler(async (req: Request, _res: Response, next: NextFunc
     handleUthontication(next);
   }
 });
+export const getUserFromToken = (token: string) => {
+  const decode = jwt.verify(token, config.tokenSecret as unknown as string);
+  return decode;
+};
 
 export default protect;

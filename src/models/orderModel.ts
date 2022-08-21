@@ -1,8 +1,8 @@
 import db from '../DB';
 import Order from '../dataTypes/orderType';
 // import Error from '../utils/errorInterface';
-import OrderProduct from '../dataTypes/orderProductType';
-import User from '../dataTypes/userType';
+// import OrderProduct from '../dataTypes/orderProductType';
+// import User from '../dataTypes/userType';
 
 class OrderModel {
   //ORDER SCHEMA
@@ -27,6 +27,23 @@ class OrderModel {
       console.log(error);
       console.log('Error creating user');
       throw new Error(`Unable to create (${order.id}): ${(error as Error).message}`);
+    }
+  }
+  async index(): Promise<Order[]> {
+    try {
+      //open connection to database
+      const client = await db.connect();
+      //run query
+      const query = 'SELECT * FROM orders';
+      const result = await client.query(query);
+      //close connection
+      client.release();
+      //return result
+      return result.rows[0];
+    } catch (error) {
+      console.log(error);
+      console.log('Error getting all orders');
+      throw new Error(`Unable to get all orders: ${(error as Error).message}`);
     }
   }
 }
