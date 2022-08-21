@@ -1,5 +1,6 @@
 import OrderModel from '../models/orderModel';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+
 //import Error from '../middelware/errorhandler';
 import asyncHandler from 'express-async-handler';
 import { getUserFromToken } from '../middelware/authonticateMiddleware';
@@ -26,5 +27,17 @@ export const getAllOrders = asyncHandler(async (req: Request, res: Response) => 
     success: true,
     length: orders.length,
     data: { orders },
+  });
+});
+export const getSinglOrder = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+  const order = await orderModel.show(req.params.id);
+  if (!order) {
+    const error: Error = new Error(`order with id ${req.params.id} not found`);
+
+    return next(error);
+  }
+  res.status(200).json({
+    success: true,
+    data: { ...order },
   });
 });

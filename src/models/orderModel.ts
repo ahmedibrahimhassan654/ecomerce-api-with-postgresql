@@ -39,11 +39,28 @@ class OrderModel {
       //close connection
       client.release();
       //return result
-      return result.rows[0];
+      return result.rows;
     } catch (error) {
       console.log(error);
       console.log('Error getting all orders');
       throw new Error(`Unable to get all orders: ${(error as Error).message}`);
+    }
+  }
+  async show(id: string): Promise<Order> {
+    try {
+      //open connection to database
+      const client = await db.connect();
+      //run query
+      const query = 'SELECT * FROM orders WHERE id = $1';
+      const result = await client.query(query, [id]);
+      //close connection
+      client.release();
+      //return result
+      return result.rows[0];
+    } catch (error) {
+      console.log(error);
+      console.log('Error getting order');
+      throw new Error(`Unable to get order: ${(error as Error).message}`);
     }
   }
 }
