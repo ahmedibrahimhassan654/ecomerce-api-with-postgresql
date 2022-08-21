@@ -1,10 +1,11 @@
-type User = {
+import Product from './productType';
+
+type OrderProduct = {
   id?: number;
-  email: string;
-  userName: string;
-  firstName: string;
-  lastName: string;
-  password?: string;
+  quantity: number;
+  orderId: number;
+  productId: number;
+  products?: Product[];
 };
 
-export default User;
+export default OrderProduct;
