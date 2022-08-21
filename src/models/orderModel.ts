@@ -63,6 +63,24 @@ class OrderModel {
       throw new Error(`Unable to get order: ${(error as Error).message}`);
     }
   }
+  async addProductToOreder(quantity: number, orderId: string, productId: string): Promise<Order> {
+    try {
+      //open connection to database
+      const client = await db.connect();
+
+      //run query
+      const query = 'INSERT INTO order_products (quantity, order_id, product_id) VALUES ($1, $2, $3) RETURNING *';
+      const result = await client.query(query, [quantity, orderId, productId]);
+      //close connection
+      client.release();
+      //return result
+      return result.rows[0];
+    } catch (error) {
+      console.log(error);
+      console.log('Error adding product to order');
+      throw new Error(`Unable to add product to order: ${(error as Error).message}`);
+    }
+  }
 }
 
 export default OrderModel;

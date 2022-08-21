@@ -41,3 +41,15 @@ export const getSinglOrder = asyncHandler(async (req: Request, res: Response, ne
     data: { ...order },
   });
 });
+export const addProduct = asyncHandler(async (req: Request, res: Response) => {
+  const orderId: string = req.params.id;
+  const productId: string = req.body.productId;
+  const quantity: number = parseInt(req.body.quantity);
+
+  const addedProduct = await orderModel.addProductToOreder(quantity, orderId, productId);
+
+  res.status(200).json({
+    success: true,
+    data: { ...addedProduct },
+  });
+});
