@@ -54,7 +54,7 @@ class UserModel {
   async getUser(id: string): Promise<User> {
     try {
       const client = await db.connect();
-      const query = 'SELECT id, email, first_name, last_name FROM users WHERE id = $1';
+      const query = 'SELECT id, email, user_name,first_name, last_name FROM users WHERE id=( $1)';
       const result = await client.query(query, [id]);
       client.release();
       return result.rows[0];
