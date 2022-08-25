@@ -14,7 +14,7 @@ class UserModel {
       const client = await db.connect();
       //run query
       const query =
-        'INSERT INTO users (email, user_name, first_name, last_name, password) VALUES ($1, $2, $3, $4,$5) RETURNING *';
+        'INSERT INTO users (email, user_name, first_name, last_name, password) VALUES ($1, $2, $3, $4,$5) RETURNING id, email, user_name, first_name, last_name';
       const result = await client.query(query, [
         user.email,
         user.user_name,
