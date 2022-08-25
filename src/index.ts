@@ -28,6 +28,14 @@ app.get('/', (req: Request, res: Response) => {
 });
 // // add routing for /api path
 app.use('/api', routes);
+
+// add routing for / path
+app.get('/', (req: Request, res: Response) => {
+  res.json({
+    message: 'Hello World 🌍',
+  });
+});
+
 app.use((_req: Request, res: Response) => {
   res.status(404).json({
     message: 'Ohh you are lost, read the API documentation to find your way back home 😂',
