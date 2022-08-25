@@ -6,7 +6,7 @@
   "scripts": {
     "migration": "db-migrate up",
     "migration:down": "db-migrate down",
-    "test": "npm run build && jasmine ",
+    "test": "set NODE_ENV=test&& db-migrate up && tsc && jasmine && db-migrate reset",
     "dev": "nodemon ./src/index.ts",
     "clean": "rimraf build/",
     "build": "yarn clean && npx tsc",
