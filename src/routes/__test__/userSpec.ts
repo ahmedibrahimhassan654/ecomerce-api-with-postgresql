@@ -129,8 +129,7 @@ describe('User API Endpoints', () => {
       // console.log('deleted', res.body);
 
       expect(res.body.success).toBe(true);
-      // expect(res.body.data.id).toBe(user.id);
-      // expect(res.body.data.user_name).toBe('mohammedelzanaty');
+   
     });
   });
 });

@@ -32,7 +32,7 @@ describe('auth model ', () => {
     });
     it('login  method should return the authenticated user', async () => {
       const authenticatedUser = await userModel.LoginUser(user.email, user.password as string);
-      console.log(authenticatedUser);
+      //   console.log(authenticatedUser);
       expect(authenticatedUser?.email).toBe(user.email);
       expect(authenticatedUser?.user_name).toBe(user.user_name);
       expect(authenticatedUser?.first_name).toBe(user.first_name);
