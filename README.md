@@ -1,6 +1,6 @@
 # Storefront Backend Project
 
-___Table of Contents___
+**_Table of Contents_**
 
 - [Storefront Backend Project](#storefront-backend-project)
   - [Getting Started](#getting-started)
@@ -16,7 +16,6 @@ ___Table of Contents___
   - [Endpoints](#endpoints)
   - [Database Schema](#database-schema)
 
-
 A StoreFront backend API written in NodeJS for Udacity. This application has APIs for Users, Products, and Orders.
 
 ## Getting Started
@@ -29,9 +28,9 @@ purposes.
 You need the following modules and dependencies installed to run this project:
 
 ```bash
-docker-compose   # To run the Postgres database on Docker
+postgres SQL     #relation database
 node 12          # To run the application
-yarn             # For dependency management
+npm             # For dependency management
 ```
 
 ### Installing
@@ -39,7 +38,7 @@ yarn             # For dependency management
 Simply, run the following command to install the project dependencies:
 
 ```bash
-yarn
+npm install
 ```
 
 ### Setup environment
@@ -48,33 +47,31 @@ First, create a `.env` file with all the required environment variables:
 
 ```bash
 # .env
-NODE_ENV=development
-PORT=3000
+NODE_ENV=dev
+PORT=4000
 # Set your database connection information here
-DB_HOST=localhost
-DB_PORT=5432
-DB_DATABASE=database_dev
-DB_DATABASE_TEST=database_test
-DB_USER=databaseuser
-DB_PASS=password
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=Allahonly1
+POSTGRES_DB_DEV=ecom_dev
+POSTGRES_DB_TEST=ecom_test
+POSTGRES_DB_PROD=ecom_prod
 # user
-BCRYPT_PASSWORD=your-secret-password
+
 SALT_ROUNDS=10
-TOKEN_SECRET=your-secret-token
+TOKEN_SECRET=supersecret
 ```
 
-Next, start the Postgres server on Docker:
+Next, start the Postgres migration:
 
 ```bash
-docker-compose up
+npm run migration
 ```
 
-Now, check if Postgres has the database `store`, if not create it:
+Now, check if Postgres has the database `ecom_dev`, if not create it:
 
 ```bash
-# Connect to Postgres container
-docker exec -it <postgres_container_id> bash
-
 # Login to Postgres
 psql -U postgres
 
@@ -82,14 +79,14 @@ psql -U postgres
 # This will list out all the databases
 \l
 
-# If "store" database is not present
-create database store; 
+# If "ecom_dev" database is not present
+create database ecom_dev;
 ```
 
 Next, you need to run the database migrations:
 
 ```bash
-yarn migrations up
+npm run migration
 ```
 
 ## Running the application
@@ -97,31 +94,31 @@ yarn migrations up
 Use the following command to run the application in watch mode:
 
 ```bash
-yarn run watch
+npm run dev
 ```
 
 Use the following command to run the application in using node:
 
 ```bash
-yarn start
+npm run start
 ```
 
-The application will run on <http://localhost:3000/>.
+The application will run on <http://localhost:4000/api>.
 
 ## Running the unit tests
 
 Use the following command to run the unit tests:
 
 ```bash
-yarn test
+npm run test
 ```
 
-You may also use the Postman collection present in the repository for testing.
+You may also use the [Postman collection](https://www.postman.com/lunar-astronaut-197297/workspace/store-backend-udacity) present in the repository for testing.
 
 ## Built With
 
 - [NodeJS](https://nodejs.org/) - The JavaScript runtime
-- [Yarn](https://yarnpkg.com/) - The dependency manager
+
 - [db-migrate](https://db-migrate.readthedocs.io/en/latest/) - The database migration tool
 - [Express](https://expressjs.com) - The web framework
 - [TypeScript](https://www.typescriptlang.org/) - Types JS extension
@@ -130,32 +127,29 @@ You may also use the Postman collection present in the repository for testing.
 ## Authors
 
 ```javascript
-
-const life: MZanatyLife = {
-  greet: "Hi 👋, I'm Mohammed Elzanaty, working as ND Frontend Lead @udacity & Senior SE @ Vodafone",
-  bio: 'A passionate teaching-lover, developer, writer, and autodidact. from Egypt',
-  currentlyLearning: 'Cloud [AWS, GCP]',
-  askMeAbout: 'Frontend Technologies',
-  reachMeAt: 'mohammedelzanaty129@gmail.com',
-  funFact: 'I learned programming by chance 😭',
+const life: Ahmed Ibrahim = {
+  greet: "Hi 👋, I'm Ahmed Ibrahim Udacity nano degree student ",
+  bio: 'A passionate engineer love cooding . from Egypt',
+  currentlyLearning: 'advanced full stack udacity nano degree',
+  askMeAbout: 'node js backend +react js +next js ',
+  reachMeAt: 'ahmedibrahimhassan654@gmail.com',
+  funFact: 'love writing code from my deep heart ',
 };
 ```
 
-[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammedelzanaty129/)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=flat&logo=twitter&logoColor=white)](https://twitter.com/mohammdelzanaty)
+[![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ahmed-ibrahim5588/)
 
 ## License
 
-This project is licensed under the ISC License - see the [LICENSE.txt](LICENSE.txt) file for details
-
 ## Acknowledgments
 
-* The official documentation of `db-migrate`
-* The official Documentation of `Jasmine`
+- The official documentation of `db-migrate`
+- The official Documentation of `Jasmine`
+
 ## Endpoints
 
 - See [REQUIREMENTS.md](./REQUIREMENTS.md) file
 
 ## Database Schema
 
- - See [REQUIREMENTS.md](./REQUIREMENTS.md) file
+- See [REQUIREMENTS.md](./REQUIREMENTS.md) file
