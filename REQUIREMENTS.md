@@ -4,7 +4,7 @@ The company stakeholders want to create an online storefront to showcase their g
 
 These are the notes from a meeting with the frontend developer that describe what endpoints the API needs to supply, as well as data shapes the frontend and backend have agreed meet the requirements of the application.
 
-___Table of Contents___
+**_Table of Contents_**
 
 - [API and Database Requirements](#api-and-database-requirements)
   - [API Endpoints](#api-endpoints)
@@ -28,6 +28,7 @@ ___Table of Contents___
 ### Users
 
 - Index - **`token required`**
+
   - HTTP verb `GET`
   - Endpoint:- `/api/users/`
   - Request Body
@@ -39,26 +40,27 @@ ___Table of Contents___
   - Response Body -- `Array of user objects`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "users": [
-            {
-              "id": 1,
-              "email": "mo@elzanaty.com",
-              "userName": "mohammedelzanaty",
-              "firstName": "Mohammed",
-              "lastName": "Elzanaty"
-            }
-          ]
-        },
-        "message": "users retrieved successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "users": [
+          {
+            "id": 1,
+            "email": "test@mail.com",
+            "userName": "AhmedIbrahim",
+            "firstName": "Ahmed",
+            "lastName": "Ibrahim"
+          }
+        ]
+      },
+      "message": "get all users successfully"
+    }
     ```
 
 - Show **`token required`**
+
   - HTTP verb `GET`
-  - Endpoint:- `/api/users/:id`  - **id of the user to be retrieved**
+  - Endpoint:- `/api/users/:id` - **id of the user to be retrieved**
   - Request Body
 
     ```json
@@ -68,54 +70,56 @@ ___Table of Contents___
   - Response Body -- `User object`
 
     ```json
-        {
-          "status": "success",
-          "data": {
-            "user": {
-              "id": 1,
-              "email": "mo@elzanaty.com",
-              "userName": "mohammedelzanaty",
-              "firstName": "Mohammed",
-              "lastName": "Elzanaty"
-            }
-          },
-          "message": "user retrieved successfully"
+    {
+      "status": "success",
+      "data": {
+        "user": {
+          "id": 1,
+          "email": "test@mail.com",
+          "userName": "AhmedIbrahim",
+          "firstName": "Ahmed",
+          "lastName": "Ibrahim"
         }
+      },
+      "message": "user retrieved successfully"
+    }
     ```
 
 - Create **`token required`**
+
   - HTTP verb `POST`
   - Endpoint:- `/api/users`
   - Request Body
 
     ```json
-      {
-        "email": "test@test.com",
-        "userName": "testuser",
-        "firstName": "Test",
-        "lastName": "User",
-        "password": "test123"
-      }
+    {
+      "email": "test@test.com",
+      "userName": "testuser",
+      "firstName": "Test",
+      "lastName": "User",
+      "password": "test123"
+    }
     ```
 
   - Response Body -- `User object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "id": 1,
-          "email": "test@test.com",
-          "userName": "testuser",
-          "firstName": "Test",
-          "lastName": "User",
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VyTmFtZSI6InRlc3R1c2VyIiwiZmlyc3ROYW1lIjoiVGVzdCIsImxhc3ROYW1lIjoiVXNlciJ9LCJpYXQiOjE2MjUwMDAyNTB9.y45Rlb9_olQIZpTHzFMH5fHK_coRlzcEuXQC2FXtCBY"
-        },
-        "message": "user created successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "id": 1,
+        "email": "test@test.com",
+        "userName": "testuser",
+        "firstName": "Test",
+        "lastName": "User",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VyTmFtZSI6InRlc3R1c2VyIiwiZmlyc3ROYW1lIjoiVGVzdCIsImxhc3ROYW1lIjoiVXNlciJ9LCJpYXQiOjE2MjUwMDAyNTB9.y45Rlb9_olQIZpTHzFMH5fHK_coRlzcEuXQC2FXtCBY"
+      },
+      "message": "user created successfully"
+    }
     ```
 
 - Delete **`token required`**
+
   - HTTP verb `DELETE`
   - Endpoint:- `/api/users/:id` - **id of the user to be deleted**
   - Request Body
@@ -127,87 +131,90 @@ ___Table of Contents___
   - Response Body -- `Deleted User object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "user": {
-            "id": 2,
-            "email": "test@test.com",
-            "userName": "testuser",
-            "firstName": "Test",
-            "lastName": "User"
-          }
-        },
-        "message": "user deleted successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "user": {
+          "id": 2,
+          "email": "test@test.com",
+          "userName": "testuser",
+          "firstName": "Test",
+          "lastName": "User"
+        }
+      },
+      "message": "user deleted successfully"
+    }
     ```
 
 - Edit **`token required`**
-  - HTTP verb `PATCH`
+
+  - HTTP verb `put`
   - Endpoint:- `/api/users/:id`
   - Request Body
 
     ```json
-      {
-        "id": 1,
-        "email": "mo@elzanaty.com",
-        "userName": "mohammedelzanaty",
-        "firstName": "Mohammed",
-        "lastName": "Elzanaty",
-        "password": "test123"
-      }
+    {
+      "id": 1,
+      "email": "test@mail.com",
+      "userName": "AhmedIbrahim",
+      "firstName": "Ahmed",
+      "lastName": "Ibrahim",
+      "password": "test123"
+    }
     ```
 
   - Response Body -- `Updated User object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "user": {
-            "id": 1,
-            "email": "mo@elzanaty.com",
-            "userName": "mohammedelzanaty",
-            "firstName": "Mohammed",
-            "lastName": "Elzanaty"
-          }
-        },
-        "message": "user updated successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "user": {
+          "id": 1,
+          "email": "test2@mail.com",
+          "userName": "AhmedIbrahim2",
+          "firstName": "Ahmed2",
+          "lastName": "Ibrahim2"
+        }
+      },
+      "message": "user updated successfully"
+    }
     ```
 
 - Authenticate
+
   - HTTP verb `POST`
-  - Endpoint:- `/api/users/authenticate`
+  - Endpoint:- `/api/users/login`
   - Request Body
 
     ```json
-      {
-        "userName": "mohammedelzanaty",
-        "password": "test123"
-      }
+    {
+      "email": "test2@mail.com",
+      "password": "test123"
+    }
     ```
 
   - Response Body -- `Updated User object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "id": 1,
-          "email": "mo@elzanaty.com",
-          "userName": "mohammedelzanaty",
-          "firstName": "Mohammed",
-          "lastName": "Elzanaty",
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6Im1vQGVsemFuYXR5LmNvbSIsInVzZXJOYW1lIjoibW9oYW1tZWRlbHphbmF0eSIsImZpcnN0TmFtZSI6Ik1vaGFtbWVkIiwibGFzdE5hbWUiOiJFbHphbmF0eSJ9LCJpYXQiOjE2MjUwMDExMDB9.ubpj0l9VSl2Hd-KlHRqqO3-PmSf0VAySY2qnJ1N_S2Y"
-        },
-        "message": "user authenticated successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "id": 1,
+        "email": "test2@mail.com",
+        "userName": "AhmedIbrahim2",
+        "firstName": "Ahmed2",
+        "lastName": "Ibrahim2",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6Im1vQGVsemFuYXR5LmNvbSIsInVzZXJOYW1lIjoibW9oYW1tZWRlbHphbmF0eSIsImZpcnN0TmFtZSI6Ik1vaGFtbWVkIiwibGFzdE5hbWUiOiJFbHphbmF0eSJ9LCJpYXQiOjE2MjUwMDExMDB9.ubpj0l9VSl2Hd-KlHRqqO3-PmSf0VAySY2qnJ1N_S2Y"
+      },
+      "message": "user loged successfully"
+    }
     ```
 
 ### Products
 
 - Index
+
   - HTTP verb `GET`
   - Endpoint:- `/api/products/`
   - Request Body
@@ -219,26 +226,27 @@ ___Table of Contents___
   - Response Body -- `Array of products`
 
     ```json
-     {
-        "status": "success",
-        "data": {
-          "products": [
-            {
-              "id": 1,
-              "name": "product name",
-              "description": "product description",
-              "price": 20,
-              "category": "Electronics."
-            }
-          ]
-        },
-        "message": "Products retrieved successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "products": [
+          {
+            "id": 1,
+            "name": "product name",
+            "description": "product description",
+            "price": 20,
+            "category": "Electronics."
+          }
+        ]
+      },
+      "message": "Products retrieved successfully"
+    }
     ```
 
 - Show
+
   - HTTP verb `GET`
-  - Endpoint:- `/api/products/:id`  - **id of the product to be retrieved**
+  - Endpoint:- `/api/products/:id` - **id of the product to be retrieved**
   - Request Body
 
     ```json
@@ -248,52 +256,54 @@ ___Table of Contents___
   - Response Body -- `Product object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "product": {
-            "id": 1,
-            "name": "product name",
-            "description": "product description",
-            "price": 9.99,
-            "category": "Electronics."
-          }
-        },
-        "message": "Product retrieved successfully"
-      }
-    ```
-
-- Create **`token required`**
-  - HTTP verb `POST`
-  - Endpoint:- `/api/products`
-  - Request Body
-
-    ```json
-      {
-        "name": "product name",
-        "description": "product description",
-        "price": 9.99,
-        "category": "Electronics."
-      }
-    ```
-
-  - Response Body -- `User object`
-
-    ```json
-      {
-        "status": "success",
-        "data": {
+    {
+      "status": "success",
+      "data": {
+        "product": {
           "id": 1,
           "name": "product name",
           "description": "product description",
           "price": 9.99,
           "category": "Electronics."
-        },
-        "message": "Product created successfully"
-      }
+        }
+      },
+      "message": "Product retrieved successfully"
+    }
+    ```
+
+- Create **`token required`**
+
+  - HTTP verb `POST`
+  - Endpoint:- `/api/products`
+  - Request Body
+
+    ```json
+    {
+      "name": "product name",
+      "description": "product description",
+      "price": 9.99,
+      "category": "Electronics."
+    }
+    ```
+
+  - Response Body -- `User object`
+
+    ```json
+    {
+      "status": "success",
+      "data": {
+        "id": 1,
+        "name": "product name",
+        "description": "product description",
+        "price": 9.99,
+        "category": "Electronics."
+      },
+      "message": "Product created successfully"
+    }
     ```
 
 - Delete **`token required`**
+
   - HTTP verb `DELETE`
   - Endpoint:- `/api/products/:id` - **id of the product to be deleted**
   - Request Body
@@ -305,60 +315,59 @@ ___Table of Contents___
   - Response Body -- `Deleted Product object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "product": {
-            "id": 3,
-            "name": "product name",
-            "description": "product description",
-            "price": 9.99,
-            "category": "Electronics."
-          }
-        },
-        "message": "Product deleted successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "product": {
+          "id": 3,
+          "name": "product name",
+          "description": "product description",
+          "price": 9.99,
+          "category": "Electronics."
+        }
+      },
+      "message": "Product deleted successfully"
+    }
     ```
 
 - Edit **`token required`**
+
   - HTTP verb `PUT`
   - Endpoint:- `/api/products/:id`
   - Request Body
 
     ```json
-      {
-        "id": 1,
-        "name": "product name",
-        "description": "product description",
-        "price": 20,
-        "category": "Electronics."
-      }
+    {
+      "id": 1,
+      "name": "product name",
+      "description": "product description",
+      "price": 20,
+      "category": "Electronics."
+    }
     ```
 
   - Response Body -- `Updated User object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "product": {
-            "id": 1,
-            "name": "product name",
-            "description": "product description",
-            "price": 20,
-            "category": "Electronics."
-          }
-        },
-        "message": "Product updated successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "product": {
+          "id": 1,
+          "name": "product name",
+          "description": "product description",
+          "price": 20,
+          "category": "Electronics."
+        }
+      },
+      "message": "Product updated successfully"
+    }
     ```
-
-- **[OPTIONAL]** Top 5 most popular products
-- **[OPTIONAL]** Products by category (args: product category)
 
 ### Orders
 
 - Index - **`token required`**
+
   - HTTP verb `GET`
   - Endpoint:- `/api/orders/`
   - Request Body
@@ -370,35 +379,36 @@ ___Table of Contents___
   - Response Body -- `Array of order objects, including an array of products added to the order and the associated user`
 
     ```json
-        {
-          "status": "success",
-          "data": {
-            "orders": [
+    {
+      "status": "success",
+      "data": {
+        "orders": [
+          {
+            "id": 1,
+            "status": "active",
+            "userId": 1,
+            "userName": "mohammedelzanaty",
+            "products": [
               {
-                "id": 1,
-                "status": "active",
-                "userId": 1,
-                "userName": "mohammedelzanaty",
-                "products": [
-                  {
-                    "name": "product name",
-                    "price": 20,
-                    "category": "Electronics.",
-                    "quantity": 1,
-                    "productId": 1,
-                    "description": "product description"
-                  }
-                ]
+                "name": "product name",
+                "price": 20,
+                "category": "Electronics.",
+                "quantity": 1,
+                "productId": 1,
+                "description": "product description"
               }
             ]
-          },
-          "message": "Orders retrieved successfully"
-        }
+          }
+        ]
+      },
+      "message": "Orders retrieved successfully"
+    }
     ```
 
 - Show - **`token required`**
+
   - HTTP verb `GET`
-  - Endpoint:- `/api/orders/:id`  - **id of the order to be retrieved**
+  - Endpoint:- `/api/orders/:id` - **id of the order to be retrieved**
   - Request Body
 
     ```json
@@ -408,48 +418,50 @@ ___Table of Contents___
   - Response Body -- `Order object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "order": {
-            "id": 1,
-            "status": "active",
-            "userId": 1,
-            "userName": "mohammedelzanaty",
-            "products": []
-          }
-        },
-        "message": "Order retrieved successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "order": {
+          "id": 1,
+          "status": "active",
+          "userId": 1,
+          "userName": "mohammedelzanaty",
+          "products": []
+        }
+      },
+      "message": "Order retrieved successfully"
+    }
     ```
 
 - Create **`token required`**
+
   - HTTP verb `POST`
   - Endpoint:- `/api/orders`
   - Request Body
 
     ```json
-      {
-        "userId": 1,
-        "status": "active"
-      }
+    {
+      "userId": 1,
+      "status": "active"
+    }
     ```
 
   - Response Body -- `User object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "id": 1,
-          "status": "active",
-          "userId": 1
-        },
-        "message": "Order created successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "id": 1,
+        "status": "active",
+        "userId": 1
+      },
+      "message": "Order created successfully"
+    }
     ```
 
 - Delete **`token required`**
+
   - HTTP verb `DELETE`
   - Endpoint:- `/api/orders/:id` - **id of the order to be deleted**
   - Request Body
@@ -461,53 +473,53 @@ ___Table of Contents___
   - Response Body -- `Deleted Order object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "order": {
-            "id": 1,
-            "status": "active",
-            "user_id": 1
-          }
-        },
-        "message": "Order deleted successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "order": {
+          "id": 1,
+          "status": "active",
+          "user_id": 1
+        }
+      },
+      "message": "Order deleted successfully"
+    }
     ```
 
 - Edit **`token required`**
+
   - HTTP verb `PUT`
   - Endpoint:- `/api/orders/:id`
   - Request Body
 
     ```json
-      {
-        "id": 1,
-        "userId": 1,
-        "status": "active"
-      }
+    {
+      "id": 1,
+      "userId": 1,
+      "status": "active"
+    }
     ```
 
   - Response Body -- `Updated User object`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "order": {
-            "id": 1,
-            "status": "active",
-            "userId": 1
-          }
-        },
-        "message": "Order updated successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "order": {
+          "id": 1,
+          "status": "active",
+          "userId": 1
+        }
+      },
+      "message": "Order updated successfully"
+    }
     ```
-
-- [OPTIONAL] Completed Orders by user [args: user id](token required)
 
 ### Order Products
 
 - Index - **`token required`**
+
   - HTTP verb `GET`
   - Endpoint:- `/api/order-products/:order_id/products` - **id of the order**
   - Request Body
@@ -519,32 +531,33 @@ ___Table of Contents___
   - Response Body -- `An array of the products associated with an order`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "orderProducts": [
-            {
-              "id": 1,
-              "orderId": 1,
-              "productId": 1,
-              "products": [
-                {
-                  "name": "product name",
-                  "price": 20,
-                  "category": "Electronics.",
-                  "quantity": 1,
-                  "productId": 1,
-                  "description": "product description"
-                }
-              ]
-            }
-          ]
-        },
-        "message": "Order Products retrieved successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "orderProducts": [
+          {
+            "id": 1,
+            "orderId": 1,
+            "productId": 1,
+            "products": [
+              {
+                "name": "product name",
+                "price": 20,
+                "category": "Electronics.",
+                "quantity": 1,
+                "productId": 1,
+                "description": "product description"
+              }
+            ]
+          }
+        ]
+      },
+      "message": "Order Products retrieved successfully"
+    }
     ```
 
 - Show - **`token required`**
+
   - HTTP verb `GET`
   - Endpoint:- `/api/order-products/:order_id/products/:product_id` - **id of the order abd id of the product to return**
   - Request Body
@@ -556,83 +569,85 @@ ___Table of Contents___
   - Response Body -- `An array of the products associated with an order`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "orderProduct": {
-            "id": 1,
-            "orderId": 1,
-            "productId": 1,
-            "quantity": 1,
-            "name": "product name",
-            "description": "product description",
-            "category": "Electronics.",
-            "price": 20
-          }
-        },
-        "message": "Product at target Order retrieved successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "orderProduct": {
+          "id": 1,
+          "orderId": 1,
+          "productId": 1,
+          "quantity": 1,
+          "name": "product name",
+          "description": "product description",
+          "category": "Electronics.",
+          "price": 20
+        }
+      },
+      "message": "Product at target Order retrieved successfully"
+    }
     ```
 
 - Edit - **`token required`**
+
   - HTTP verb `PATCH`
   - Endpoint:- `/api/order-products/:order_id/products/:product_id` - **id of the order abd id of the product to return**
   - Request Body
 
     ```json
-      {
-        "id": 1,
-        "orderId": 1,
-        "productId": 1,
-        "quantity": 4
-      }
+    {
+      "id": 1,
+      "orderId": 1,
+      "productId": 1,
+      "quantity": 4
+    }
     ```
 
   - Response Body -- `An array of the products associated with an order`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "orderProduct": {
-            "id": 1,
-            "quantity": 4,
-            "orderId": 1,
-            "productId": 1
-          }
-        },
-        "message": "order Product updated successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "orderProduct": {
+          "id": 1,
+          "quantity": 4,
+          "orderId": 1,
+          "productId": 1
+        }
+      },
+      "message": "order Product updated successfully"
+    }
     ```
 
 - Delete - **`token required`**
+
   - HTTP verb `DELETE`
   - Endpoint:- `/api/order-products/:order_id/products/:product_id` - **id of the order abd id of the product to return**
   - Request Body
 
     ```json
-      {
-        "orderId": 1,
-        "productId": 1
-      }
+    {
+      "orderId": 1,
+      "productId": 1
+    }
     ```
 
   - Response Body -- `An array of the products associated with an order`
 
     ```json
-      {
-        "status": "success",
-        "data": {
-          "orderProduct": {
-            "id": 1,
-            "quantity": 1,
-            "orderId": 1,
-            "productId": 1,
-            "products": []
-          }
-        },
-        "message": "Order Product deleted successfully"
-      }
+    {
+      "status": "success",
+      "data": {
+        "orderProduct": {
+          "id": 1,
+          "quantity": 1,
+          "orderId": 1,
+          "productId": 1,
+          "products": []
+        }
+      },
+      "message": "Order Product deleted successfully"
+    }
     ```
 
 ## Data Schema
@@ -695,7 +710,7 @@ type User = {
   firstName: string;
   lastName: string;
   password?: string;
-}
+};
 ```
 
 ### Product
@@ -716,14 +731,14 @@ type Product = {
 type Order = {
   id?: number;
   // status of order (active or complete)
-  status: string; 
+  status: string;
   userId: string;
   userName?: string;
-  // quantity of each product in the order 
+  // quantity of each product in the order
   // id of each product in the order
   // => [{ product_id: number, quantity: number, etc.. }]
-  products?: OrderProduct[]; 
-}
+  products?: OrderProduct[];
+};
 ```
 
 ### Order Product
